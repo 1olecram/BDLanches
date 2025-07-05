@@ -46,7 +46,7 @@ banco.on('error', (err) =>{
  * @returns {Promise<{update: number, resultado: Object[], correto: boolean}>} - Retorna uma promessa com o resultado da consulta.
  */
 
-function consultaSimples(sql, valor, mensagem) {
+export default function consultaSimples(sql, valor, mensagem) {
     return new Promise(async (resolve, reject) => {
         try {
             let result;

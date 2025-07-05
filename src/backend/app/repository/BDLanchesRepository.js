@@ -1,4 +1,4 @@
-import consultaSimples from "../database/BDLanchesConnection";
+import consultaSimples from "../database/BDLanchesConnection.js";
 
 class BDLanchesRepository {
 

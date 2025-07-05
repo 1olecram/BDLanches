@@ -1,4 +1,4 @@
-import BDLanchesRepository from "../repository/BDLanchesRepository";
+import BDLanchesRepository from "../repository/BDLanchesRepository.js";
 
 class BDLanchesController {
 

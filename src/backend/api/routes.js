@@ -1,6 +1,5 @@
 import { Router } from 'express';
-import BDLanchesController from '../app/controllers/BDLanchesController';
-import BDLanchesRepository from '../app/repository/BDLanchesRepository';
+import BDLanchesController from '../app/controllers/BDLanchesController.js';
 
 const router = Router();
 
@@ -67,3 +66,4 @@ router.post('/despesas', BDLanchesController.postDespesa);
 router.put('/despesas/:id_despesa', BDLanchesController.putDespesa);
 router.delete('/despesas/:id_despesa', BDLanchesController.deleteDespesa);
 
+export default router;
