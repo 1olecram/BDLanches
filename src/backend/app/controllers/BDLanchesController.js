@@ -61,7 +61,7 @@ class BDLanchesController {
 
     async deleteFuncionario(req,res){
         const cpf = req.params.cpf
-        const resultado = BDLanchesRepository.deleteFuncionario(cpf)
+        const resultado = await BDLanchesRepository.deleteFuncionario(cpf)
             if (resultado.correto){
                 // Mesma lógica da atualização
                 if(resultado.update > 0) res.json({ message: 'Excluído com sucesso!', exclusao: true})
@@ -74,7 +74,7 @@ class BDLanchesController {
 
     async getTrabalhaNa(req,res){
         try {
-            const resultado = BDLanchesRepository.getTrabalhaNa()
+            const resultado = await BDLanchesRepository.getTrabalhaNa()
             res.json(resultado)           
         } catch (erro) {
             console.error(erro)
@@ -85,7 +85,7 @@ class BDLanchesController {
     async getHistorico(req,res){
         try {
             const cpf = req.params.cpf
-            const resultado = BDLanchesRepository.getHistorico(cpf)
+            const resultado = await BDLanchesRepository.getHistorico(cpf)
             if (resultado.correto){
                 if(resultado.resultado.length > 0) res.json({ funcionario: resultado.resultado, busca: true})
                 else res.json({ message: 'CPF não consta na base de dados', busca: false})
@@ -100,7 +100,7 @@ class BDLanchesController {
 
     async getFranquias(req,res){
         try {
-            const resultado = BDLanchesRepository.getFranquias()
+            const resultado = await BDLanchesRepository.getFranquias()
             res.json(resultado)           
         } catch (erro) {
             console.error(erro)
@@ -111,7 +111,7 @@ class BDLanchesController {
     async getByIDFranquia(req,res){
         try {
             const id = req.params.id
-            const resultado = BDLanchesRepository.getByIDFranquia(id)
+            const resultado = await BDLanchesRepository.getByIDFranquia(id)
             if (resultado.correto){
                 if(resultado.resultado.length > 0) res.json({ funcionario: resultado.resultado, busca: true})
                 else res.json({ message: 'CPF não consta na base de dados', busca: false})
@@ -125,7 +125,7 @@ class BDLanchesController {
     async getRelatorioFranquia(req,res){
         try {
             const id = req.params.id
-            const resultado = BDLanchesRepository.getRelatorioFranquia(id)
+            const resultado = await BDLanchesRepository.getRelatorioFranquia(id)
             if (resultado.correto){
                 if(resultado.resultado.length > 0) res.json({ funcionario: resultado.resultado, busca: true})
                 else res.json({ message: 'CPF não consta na base de dados', busca: false})
@@ -139,7 +139,7 @@ class BDLanchesController {
     async getPedidosPorFranquia(req,res){
         try {
             const id = req.params.id
-            const resultado = BDLanchesRepository.getPedidosPorFranquia(id)
+            const resultado = await BDLanchesRepository.getPedidosPorFranquia(id)
             if (resultado.correto){
                 if(resultado.resultado.length > 0) res.json({ funcionario: resultado.resultado, busca: true})
                 else res.json({ message: 'CPF não consta na base de dados', busca: false})
@@ -180,7 +180,7 @@ class BDLanchesController {
     async deleteFranquia(req,res){
         try {
             const id = req.params.id
-            const resultado = BDLanchesRepository.deleteFranquia(id)
+            const resultado = await BDLanchesRepository.deleteFranquia(id)
                 if (resultado.correto){
                     if(resultado.update > 0) res.json({ message: 'Excluído com sucesso!', exclusao: true})
                     else res.json({ message: 'CPF não consta na base de dados', exclusao: false})
@@ -194,7 +194,7 @@ class BDLanchesController {
 
     async getProdutos(req, res){
         try {
-            const resultado = BDLanchesRepository.getProdutos()
+            const resultado = await BDLanchesRepository.getProdutos()
             res.json(resultado)
         } catch (error) {
             console.log(error)
@@ -204,7 +204,7 @@ class BDLanchesController {
     async getProdutoByCodigo(req,res){
         try {
             const codigo = req.params.codigo
-            const resultado = BDLanchesRepository.getProdutoByCodigo(codigo)
+            const resultado = await BDLanchesRepository.getProdutoByCodigo(codigo)
             if (resultado.correto){
                 if(resultado.resultado.length > 0) res.json({ funcionario: resultado.resultado, busca: true})
                 else res.json({ message: 'Codigo não consta na base de dados', busca: false})
@@ -247,7 +247,7 @@ class BDLanchesController {
     async deleteProduto(req,res){
         try {
             const codigo = req.params.codigo
-            const resultado = BDLanchesRepository.deleteProduto(codigo)
+            const resultado = await BDLanchesRepository.deleteProduto(codigo)
                 if (resultado.correto){
                     if(resultado.update > 0) res.json({ message: 'Excluído com sucesso!', exclusao: true})
                     else res.json({ message: 'CPF não consta na base de dados', exclusao: false})
@@ -256,6 +256,16 @@ class BDLanchesController {
         } catch (error) {
             console.log(error)
         }        
+    }
+
+    async getEstoque(req,res){
+        try {
+            const id = req.params.id;
+            const resultado = await BDLanchesRepository.getEstoque(id)
+            return res.json(resultado)
+        } catch (error) {
+            console.log(error)   
+        }
     }
 
     async putEstoque (req,res){
@@ -273,6 +283,7 @@ class BDLanchesController {
             console.log(error)
         }
     }
+
 
     async putPedidoCardapio(req, res){
         try{
@@ -292,7 +303,7 @@ class BDLanchesController {
 
     async getPedidos(req, res){
         try {
-            const resultado = BDLanchesRepository.getPedidos()
+            const resultado = await BDLanchesRepository.getPedidos()
             res.json(resultado)    
         } catch (error) {
             console.log(error)
@@ -302,7 +313,7 @@ class BDLanchesController {
     async getPedidoByNumero(req,res){
         try {
             const numero = req.params.numero
-            const resultado = BDLanchesRepository.getPedidoByNumero(numero)
+            const resultado = await BDLanchesRepository.getPedidoByNumero(numero)
             if (resultado.correto){
                 if(resultado.resultado.length > 0) res.json({ funcionario: resultado.resultado, busca: true})
                 else res.json({ message: 'Numero de pedido não consta na base de dados', busca: false})
@@ -343,7 +354,7 @@ class BDLanchesController {
     async deletePedido (req, res){
         try {
             const numero = req.params.numero
-            const resultado = BDLanchesRepository.deletePedido(numero)
+            const resultado = await BDLanchesRepository.deletePedido(numero)
                 if (resultado.correto){
                     if(resultado.update > 0) res.json({ message: 'Excluído com sucesso!', exclusao: true})
                     else res.json({ message: 'CPF não consta na base de dados', exclusao: false})
@@ -357,7 +368,7 @@ class BDLanchesController {
     async getDespesasFranquia(req,res){
         try {
             const id = req.params.id
-            const resultado = BDLanchesRepository.getDespesasFranquia(id)
+            const resultado = await BDLanchesRepository.getDespesasFranquia(id)
                 if (resultado.correto){
                     if(resultado.resultado.length > 0) res.json({ funcionario: resultado.resultado, busca: true})
                     else res.json({ message: 'Numero de pedido não consta na base de dados', busca: false})
@@ -397,7 +408,7 @@ class BDLanchesController {
     async deleteDespesa (req,res){
         try {
             const id = req.params.id
-            const resultado = BDLanchesRepository.deleteDespesa
+            const resultado = await BDLanchesRepository.deleteDespesa
                 if (resultado.correto){
                     if(resultado.update > 0) res.json({ message: 'Excluído com sucesso!', exclusao: true})
                     else res.json({ message: 'CPF não consta na base de dados', exclusao: false})

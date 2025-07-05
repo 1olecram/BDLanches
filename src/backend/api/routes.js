@@ -15,7 +15,7 @@ router.delete('/funcionarios/:cpf', BDLanchesController.deleteFuncionario);
 /**
  * Rotas para histórico de trabalho (TRABALHA_NA).
  */
-router.get('/trabalhos', BDLanchesController.getTrabalhaNa);
+router.get('/trabalhos/', BDLanchesController.getTrabalhaNa);
 router.get('/trabalhos/:cpf', BDLanchesController.getHistorico);
 
 /**
@@ -41,13 +41,14 @@ router.delete('/produtos/:codigo', BDLanchesController.deleteProduto);
 /**
  * Rotas para manipulação de estoque por franquia.
  */
+router.get('/estoque/:id_franquia', BDLanchesController.getEstoque)
 router.put('/estoque/:id_franquia/:codigo', BDLanchesController.putEstoque);
 
 /**
  * Rotas para itens do pedido (pedido_cardapio).
- * (⚠️ Recomendado revisar pois `id_franquia` não existe na tabela PEDIDO_CARDAPIO)
+ * 
  */
-router.put('/pedidos-cardapio/:id_franquia/:codigo', BDLanchesController.putPedidoCardapio);
+router.put('/pedidos-cardapio/:numero_pedido/:codigo', BDLanchesController.putPedidoCardapio);
 
 /**
  * Rotas para manipulação de pedidos.

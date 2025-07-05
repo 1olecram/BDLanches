@@ -9,7 +9,7 @@ class BDLanchesRepository {
     }
 
     async getByCPFFuncionario (cpf){
-        return consultaSimples('select * from where cpf = $1', cpf, "Falha ao buscar CPF")
+        return consultaSimples('select * from funcionario_lanchonete where cpf = $1', cpf, "Falha ao buscar CPF")
     }
 
     async postFuncionario (cpf, nome, email, salario, cargo){
@@ -32,6 +32,10 @@ class BDLanchesRepository {
 
     async getHistorico (cpf){
         return consultaSimples('select * from trabalha_na where cpf = $1', cpf, 'Erro ao buscar CPF')
+    }
+
+    async postTrabalhaNa (cpf, id_franquia, data_inicio, data_saida){
+        return consultaSimples('insert into trabalha_na values($1, $2, $3, $4)', [cpf, id_franquia, data_inicio, data_saida], "Falha ao inserir funcionário")
     }
 
     // franquias
@@ -125,6 +129,14 @@ class BDLanchesRepository {
     }
 
     // estoque
+
+    async getEstoque(id){
+        return consultaSimples(
+            'select * from estoque_franquia where id_franquia = $1',
+            id,
+            'Erro ao buscar franquia'
+        )
+    }
 
     async putEstoque (qtd, codigo, id_franquia){
         return consultaSimples(
