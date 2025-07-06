@@ -1,5 +1,3 @@
-import { fetchData } from "../extrairData.js";
-import { atualizaGraficoPizzaFim, atualizaGraficoPizzaMeio, preencheGEXFim, preencheGEXMeio, preencheTotalFim, preencheTotalMeio } from "./updateGraphic.js";
 
 
 $(async function() {

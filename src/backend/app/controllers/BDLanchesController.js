@@ -408,7 +408,7 @@ class BDLanchesController {
     async deleteDespesa (req,res){
         try {
             const id = req.params.id
-            const resultado = await BDLanchesRepository.deleteDespesa
+            const resultado = await BDLanchesRepository.deleteDespesa(id)
                 if (resultado.correto){
                     if(resultado.update > 0) res.json({ message: 'Excluído com sucesso!', exclusao: true})
                     else res.json({ message: 'CPF não consta na base de dados', exclusao: false})
@@ -418,6 +418,30 @@ class BDLanchesController {
             console.log(error)
         } 
     }
+
+    // sessao
+
+    async login(req, res){
+        try {
+            const {email, cpf} = req.body
+            const resultado = await BDLanchesRepository.confereDadosLogin(email, cpf)
+            if(resultado.resultado.length == 0){
+                res.status(404).json({ 
+                    logado: false,
+                    message: "Email e/ou CPF não encontrados na base de dados."
+                })
+            } 
+            else{
+                if(resultado.resultado[0].cargo == "Atendente") res.status(200).json({message: "Logado com sucesso", logado: true, redirect: "indexFuncionario.html"})
+                else res.status(200).json({message: "Logado com sucesso", logado: true, redirect: "index.html"})
+                    
+            }             
+        } catch (error) {
+            console.log(error)
+        }
+    
+    }
+
 
 }
 

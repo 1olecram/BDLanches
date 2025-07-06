@@ -202,6 +202,15 @@ class BDLanchesRepository {
         return consultaSimples('DELETE FROM despesa WHERE numero_pedido = $1', id_despesa, 'Erro ao excluir produto');
     }
 
+    // sessions/login
+
+    async confereDadosLogin(email, cpf){
+        return consultaSimples('select * from funcionario_lanchonete where cpf = $1 and email = $2',
+            [cpf, email],
+            "Erro ao buscar cadastro"
+        )
+    }
+
 }
 
 

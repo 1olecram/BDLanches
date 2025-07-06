@@ -67,4 +67,9 @@ router.post('/despesas', BDLanchesController.postDespesa);
 router.put('/despesas/:id_despesa', BDLanchesController.putDespesa);
 router.delete('/despesas/:id_despesa', BDLanchesController.deleteDespesa);
 
+/**
+ * Rotas para controle de sessão
+ */
+router.post('/login', BDLanchesController.login)
+
 export default router;

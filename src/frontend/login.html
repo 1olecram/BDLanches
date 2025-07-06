@@ -17,10 +17,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
   <!--main css-->
-  <link href="./frontend/css/bootstrap-extended.css" rel="stylesheet">
-  <link href="./frontend/css/main/main.css" rel="stylesheet">
-  <link href="./frontend/css/responsivo/responsive.css" rel="stylesheet">
-  <link href="./frontend/css/dark/dark-theme.css" rel="stylesheet">
+  <link href="./css/bootstrap-extended.css" rel="stylesheet">
+  <link href="./css/main/main.css" rel="stylesheet">
+  <link href="./css/responsivo/responsive.css" rel="stylesheet">
+  <link href="./css/dark/dark-theme.css" rel="stylesheet">
 
   </head>
 
@@ -40,22 +40,14 @@
 
                   <div class="form-body my-4">
 										<form class="row g-3" id="telaEntrada">
-                      <div class="dropdown">
-							      
-                        <select class="form-select" id="tipoDeUsuario">
-                          <option value="" disabled selected>Selecione como você quer entrar</option>
-                          <option value="usuario">Usuario</option> 
-                          <option value="adm">Administrador</option>
-                        </select>
-                          
-                        </div>
+
 											<div class="col-12">
 												<label for="email" class="form-label">Email</label>
 												<input type="email" class="form-control" id="email" placeholder="usuario@lanche.com">
 											</div>
 											<div class="col-12">
 												<label for="email" class="form-label">CPF</label>
-												<input type="email" class="form-control" id="email" placeholder="12345678910">
+												<input type="text" class="form-control" id="cpf" placeholder="12345678910">
 											</div>
 
 											<div class="col-12">
@@ -84,7 +76,7 @@
 
     <!--plugins-->
     <script src="./public/js/jquery.min.js"></script>
-    
+    <script type="module" src="js/session/login.js"></script>
 
     <script>
       $(document).ready(function () {

@@ -1,9 +1,14 @@
-import app from "./src/backend/api/app.js";
+import appApi from "./src/backend/api/appApi.js";
+import frontApp from "./src/backend/frontRoutes/appFront.js";
 
 /**
  * Rodar o servidor!
  */
 
-app.listen(process.env.API_PORT, '0.0.0.0', function(){
-    console.log(`SITE rodando na porta ${process.env.API_PORT}!`);
+appApi.listen(process.env.API_PORT, '0.0.0.0', function(){
+    console.log(`BACKEND rodando na porta ${process.env.API_PORT}!`);
+});
+
+frontApp.listen(process.env.FRONT_PORT, '0.0.0.0', function(){
+    console.log(`SITE rodando na porta ${process.env.FRONT_PORT}!`);
 });
