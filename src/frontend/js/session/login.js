@@ -2,7 +2,6 @@
 
 document.getElementById("login").addEventListener('click', async(event) =>{    
     event.preventDefault();
-    var adm = null;
     const cpf = document.getElementById('cpf').value.trim();
     const email = document.getElementById('email').value.trim();
     const result = ({"email" : email, "cpf": cpf})
@@ -23,8 +22,7 @@ document.getElementById("login").addEventListener('click', async(event) =>{
     }
 
             document.getElementById("email").value = "";
-            document.getElementById("senha").value = "";
-            document.getElementById("tipoDeUsuario").value = ""       
+            document.getElementById("cpf").value = "";    
 
 })
 
