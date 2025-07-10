@@ -24,7 +24,7 @@ class BDLanchesController {
                 if(resultado.resultado.length > 0) res.json({ funcionario: resultado.resultado, busca: true})
                 else res.json({ message: 'CPF não consta na base de dados', busca: false})
             } 
-            else res.send(resultado.message)
+            else res.json({"message": resultado.message})
         } catch (error) {
             console.log(error)
     }
@@ -50,10 +50,10 @@ class BDLanchesController {
                 // Confere Se houve alguma atualização, pois se tentar atualizar uma row que não existe no banco de dados, o código não dá erro, apenas não faz nada
                 // Então, se por acaso o código não fizer nada, já retorna que não foi atualizado nada porque o ID fornecido não consta no banco.
 
-                if(resultado.update > 0) res.send('Atualizado com sucesso!')
-                else res.send('|CPF não consta na base de dados')
+                if(resultado.update > 0) res.json({"message": 'Atualizado com sucesso!'})
+                else res.json({"message": 'CPF não consta na base de dados'})
             } 
-            else res.send(resultado.message)
+            else res.json({"message": resultado.message})
         } catch (error) {
             console.log(error)
         }
@@ -90,7 +90,7 @@ class BDLanchesController {
                 if(resultado.resultado.length > 0) res.json({ funcionario: resultado.resultado, busca: true})
                 else res.json({ message: 'CPF não consta na base de dados', busca: false})
             } 
-            else res.send(resultado.message)
+            else res.json({"message": resultado.message})
         } catch (error) {
             console.log(error)
         }
@@ -116,7 +116,7 @@ class BDLanchesController {
                 if(resultado.resultado.length > 0) res.json({ funcionario: resultado.resultado, busca: true})
                 else res.json({ message: 'CPF não consta na base de dados', busca: false})
             } 
-            else res.send(resultado.message)
+            else res.json({"message": resultado.message})
         } catch (error) {
             console.log(error)
         }
@@ -130,7 +130,7 @@ class BDLanchesController {
                 if(resultado.resultado.length > 0) res.json({ funcionario: resultado.resultado, busca: true})
                 else res.json({ message: 'CPF não consta na base de dados', busca: false})
             } 
-            else res.send(resultado.message)
+            else res.json({"message": resultado.message})
         } catch (error) {
             console.log(error)
         }
@@ -144,7 +144,7 @@ class BDLanchesController {
                 if(resultado.resultado.length > 0) res.json({ funcionario: resultado.resultado, busca: true})
                 else res.json({ message: 'CPF não consta na base de dados', busca: false})
             } 
-            else res.send(resultado.message)
+            else res.json({"message": resultado.message})
         } catch (error) {
             console.log(error)
         }
@@ -167,10 +167,10 @@ class BDLanchesController {
         const {coluna, valor} = req.body
         const resultado = await BDLanchesRepository.putFranquia(id, coluna, valor)
         if (resultado.correto){
-            if(resultado.update > 0) res.send('Atualizado com sucesso!')
-            else res.send('Id não consta na base de dados')
+            if(resultado.update > 0) res.json({message: 'Atualizado com sucesso!'})
+            else res.json({message: 'Id não consta na base de dados'})
         } 
-        else res.send(resultado.message)
+        else res.json({"message": resultado.message})
         } catch (error) {  
             console.log(error)
         }
@@ -209,7 +209,7 @@ class BDLanchesController {
                 if(resultado.resultado.length > 0) res.json({ funcionario: resultado.resultado, busca: true})
                 else res.json({ message: 'Codigo não consta na base de dados', busca: false})
             } 
-            else res.send(resultado.message)
+            else res.json({"message": resultado.message})
         } catch (error) {
             console.log(error)
         }
@@ -235,10 +235,10 @@ class BDLanchesController {
             const {coluna, valor} = req.body
             const resultado = await BDLanchesRepository.putProduto(codigo, coluna, valor)
             if (resultado.correto){
-                if(resultado.update > 0) res.send('Atualizado com sucesso!')
-                else res.send('Id não consta na base de dados')
+                if(resultado.update > 0) res.json({"message": 'Atualizado com sucesso!'})
+                else res.json({"message": 'CPF não consta na base de dados'})
             } 
-            else res.send(resultado.message)
+            else res.json({"message": resultado.message})
             } catch (error) {  
                 console.log(error)
         }
@@ -275,10 +275,10 @@ class BDLanchesController {
             const {qtd} = req.body
             const resultado = await BDLanchesRepository.putEstoque(qtd, codigo, id_franquia)
             if (resultado.correto){
-                if(resultado.update > 0) res.send('Atualizado com sucesso!')
-                else res.send('Codigo/ID não consta na base de dados')
+                if(resultado.update > 0) res.json({"message": 'Atualizado com sucesso!'})
+                else res.json({"message": 'Codigo/ID não consta na base de dados'})
             } 
-            else res.send(resultado.message)
+            else res.json({"message": resultado.message})
         } catch (error) {  
             console.log(error)
         }
@@ -292,10 +292,10 @@ class BDLanchesController {
             const {qtd_produto} = req.body
             const resultado = await BDLanchesRepository.putPedidoCardapio(numero_pedido, codigo, qtd_produto)
             if (resultado.correto){
-                if(resultado.update > 0) res.send('Atualizado com sucesso!')
-                else res.send('Codigo/ID não consta na base de dados')
+                if(resultado.update > 0) res.json({"message": 'Atualizado com sucesso!'})
+                else res.json({"message": 'Codigo/ID não consta na base de dados'})
             } 
-            else res.send(resultado.message)
+            else res.json({"message": resultado.message})
         } catch (error) {  
             console.log(error)
         }
@@ -318,7 +318,7 @@ class BDLanchesController {
                 if(resultado.resultado.length > 0) res.json({ funcionario: resultado.resultado, busca: true})
                 else res.json({ message: 'Numero de pedido não consta na base de dados', busca: false})
             } 
-            else res.send(resultado.message)
+            else res.json({"message": resultado.message})
         } catch (error) {
             console.log(error)
         }        
@@ -342,10 +342,10 @@ class BDLanchesController {
             const {coluna, valor} = req.body
             const resultado = await BDLanchesRepository.putPedido(numero, coluna, valor)
             if (resultado.correto){
-                if(resultado.update > 0) res.send('Atualizado com sucesso!')
-                else res.send('Id não consta na base de dados')
+                if(resultado.update > 0) res.json({"message": 'Atualizado com sucesso!'})
+                else res.json({"message": 'Codigo/ID não consta na base de dados'})
             } 
-            else res.send(resultado.message)
+            else res.json({"message": resultado.message})
         } catch (error) {  
             console.log(error)
         }
@@ -396,10 +396,10 @@ class BDLanchesController {
             const {coluna, valor} = req.body
             const resultado = await BDLanchesRepository.putDespesa(id, coluna, valor)
             if (resultado.correto){
-                if(resultado.update > 0) res.send('Atualizado com sucesso!')
-                else res.send('Id não consta na base de dados')
+                if(resultado.update > 0) res.json({"message": 'Atualizado com sucesso!'})
+                else res.json({"message": 'Codigo/ID não consta na base de dados'})
             } 
-            else res.send(resultado.message)
+            else res.json({"message": resultado.message})
         } catch (error) {  
             console.log(error)
         }                
@@ -442,6 +442,34 @@ class BDLanchesController {
     
     }
 
+    // relatorios
+
+    async getVendasFranquia(req,res){
+        try {
+            const resultado = await BDLanchesRepository.getVendasFranquia()
+            res.json(resultado)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    async getReceitaFranquia(req,res){
+        try {
+            const resultado = await BDLanchesRepository.getReceitaFranquia()
+            res.json(resultado)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    async getFuncionariosFranquia(req,res){
+        try {
+            const resultado = await BDLanchesRepository.getFuncionariosFranquia()
+            res.json(resultado)
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
 }
 

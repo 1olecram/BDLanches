@@ -72,4 +72,12 @@ router.delete('/despesas/:id_despesa', BDLanchesController.deleteDespesa);
  */
 router.post('/login', BDLanchesController.login)
 
+/**
+ * Rotas para gerar relatórios 
+ */
+router.get('/relatorioFuncionarios', BDLanchesController.getFuncionariosFranquia)
+router.get('/relatorioVenda', BDLanchesController.getVendasFranquia)
+router.get('/relatorioReceita', BDLanchesController.getReceitaFranquia)
+
+
 export default router;

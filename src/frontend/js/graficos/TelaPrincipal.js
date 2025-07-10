@@ -1,72 +1,25 @@
 
+import { fetchData } from "../fetch/fetchData.js";
 
 $(async function() {
 
+  const dadosVenda = await fetchData('relatorioVenda')
+  const dadosFuncionarios = await fetchData('relatorioFuncionarios')
+  const dadosReceita = await fetchData('relatorioReceita')
 
     // graficos gex/sr
-
-    var options = {
-        series: [{
-          name: "Franquia 2",
-          data: [1, 2]
-        }, {
-          name: "Franquia 1",
-          data: [3, 2]
-        }],
-        chart: {
-          foreColor: "#9ba7b2",
-          height: 380,
-          type: 'bar',
-          zoom: {
-            enabled: false
-          },
-          toolbar: {
-              show: !1,
-          }
-        },
-        plotOptions: {
-          bar: {
-              horizontal: !1,
-              columnWidth: "60%",
-              endingShape: "rounded"
-          }
-        },
-        dataLabels: {
-          enabled: false
-        },
-        stroke: {
-          show: !0,
-          width: 4,
-          colors: ["transparent"]
-      },
-      colors: ["#02c27a", "#0d6efd", "#9ba7b2", "#c2c202", "#fd0d15"],
-        grid: {
-          show: true,
-          borderColor: 'rgba(0, 0, 0, 0.15)',
-          strokeDashArray: 4,
-        },
-        tooltip: {
-          theme: "dark",
-        },
-      xaxis: {
-        categories: ['arroz', 'feijao']
-      }
-      };
-    
-    var chart = new ApexCharts(document.querySelector("#Teste"), options);
-    chart.render();
-
+console.log(dadosFuncionarios.resultado.map(item => item.total_funcionarios_ativos),)
     // grafico pgd
     
     var options2 = {
       
-        series: [1, 2, 3],
+        series: dadosFuncionarios.resultado.map(item => item.total_funcionarios_ativos),
         chart: {
             foreColor: "#9ba7b2",
             height: 380,
             type: 'pie',
         },
-        labels: ['Parcial', 'Integral', 'Presencial'],
+        labels: dadosFuncionarios.resultado.map(item => item.id_franquia),
         legend: {
       position: "bottom",
       show: !0
@@ -87,6 +40,69 @@ $(async function() {
     var chart1 = new ApexCharts(document.querySelector("#Teste1"), options2);
     chart1.render();
 
+
+    var options2 = {
+      
+        series: dadosVenda.resultado.map(item => item.numero_vendas),
+        chart: {
+            foreColor: "#9ba7b2",
+            height: 380,
+            type: 'pie',
+        },
+        labels: dadosFuncionarios.resultado.map(item => item.id_franquia),
+        legend: {
+      position: "bottom",
+      show: !0
+    },
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                    width: 200
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }]
+    };
+
+  
+    
+    var chart1 = new ApexCharts(document.querySelector("#Teste2"), options2);
+    chart1.render();
+
+
+        var options2 = {
+      
+        series: dadosReceita.resultado.map(item => Number(item.receita_total)),
+        chart: {
+            foreColor: "#9ba7b2",
+            height: 380,
+            type: 'pie',
+        },
+        labels: dadosFuncionarios.resultado.map(item => item.id_franquia),
+        legend: {
+      position: "bottom",
+      show: !0
+    },
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                    width: 200
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }]
+    };
+
+  
+    
+    var chart1 = new ApexCharts(document.querySelector("#Teste3"), options2);
+    chart1.render();
     // grafico servidores gex
 
     var options2 = {

@@ -17,11 +17,11 @@ class BDLanchesRepository {
     }
 
     async putFuncionario (cpf, coluna, valor) {
-        return consultaSimples(`update funcionario_lanchonete set ${coluna} = $1 where id = $2`, [valor, cpf], 'Falha na atualização dos dados')
+        return consultaSimples(`update funcionario_lanchonete set ${coluna} = $1 where cpf = $2`, [valor, cpf], 'Falha na atualização dos dados')
     }
 
     async deleteFuncionario (cpf){
-        return consultaSimples('delete from funcionario_lanchonete where id = $1', cpf, 'Falha na exclusão dos dados');
+        return consultaSimples('delete from funcionario_lanchonete where cpf = $1', cpf, 'Falha na exclusão dos dados');
     }
 
     //trabalha na
@@ -38,6 +38,35 @@ class BDLanchesRepository {
         return consultaSimples('insert into trabalha_na values($1, $2, $3, $4)', [cpf, id_franquia, data_inicio, data_saida], "Falha ao inserir funcionário")
     }
 
+    // relatorio
+
+    async getVendasFranquia() {
+        return consultaSimples(
+            'SELECT id_franquia, numero_vendas FROM franquia',
+            '',
+            'Erro ao buscar relatório da franquia'
+        );
+    }
+
+    async getReceitaFranquia() {
+        return consultaSimples(
+            'SELECT id_franquia, receita_total FROM franquia',
+            '',
+            'Erro ao buscar relatório da franquia'
+        );
+    }
+
+    async getFuncionariosFranquia(){
+        return consultaSimples(`SELECT f.id_franquia, COUNT(t.cpf) AS total_funcionarios_ativos 
+            FROM franquia f 
+            LEFT JOIN trabalha_na t ON f.id_franquia = t.id_franquia 
+            AND t.data_saida IS NULL
+            GROUP BY f.id_franquia`,
+            '',
+            "Erro na busca"
+        )
+    }
+
     // franquias
 
     async getFranquias() {
@@ -46,26 +75,6 @@ class BDLanchesRepository {
 
     async getByIDFranquia(id) {
         return consultaSimples('SELECT * FROM franquia WHERE id_franquia = $1', id, 'Falha ao buscar franquia');
-    }
-
-    async getRelatorioFranquia(id) {
-        return consultaSimples(
-            'SELECT numero_vendas, receita_total FROM franquia WHERE id_franquia = $1',
-            id,
-            'Erro ao buscar relatório da franquia'
-        );
-    }
-
-    async getPedidosPorFranquia(id) {
-        return consultaSimples(
-            `SELECT p.numero_pedido, p.data_hora, p.valor_total, f.nome AS funcionario
-            FROM pedido_lanchonete p
-            JOIN funcionario_lanchonete f ON f.cpf = p.cpf_func
-            WHERE p.id_franquia = $1
-            ORDER BY p.data_hora DESC`,
-            id,
-            'Erro ao buscar pedidos da franquia'
-        );
     }
 
     async postFranquia(logradouro, cpf_gerente) {
@@ -210,6 +219,8 @@ class BDLanchesRepository {
             "Erro ao buscar cadastro"
         )
     }
+
+
 
 }
 

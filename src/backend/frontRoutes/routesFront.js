@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 const router = Router();
 
 router.get('/', (req, res) =>{
-    res.sendFile(path.join(__dirname, '../../frontend/index.html'))
+    res.sendFile(path.join(__dirname, '../../frontend/login.html'))
 })
 
 export default router;
