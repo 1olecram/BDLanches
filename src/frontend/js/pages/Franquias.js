@@ -30,18 +30,18 @@ document.getElementById("searchFunc").addEventListener('click', async(e) =>{
 // função que insere uma franquia
 document.getElementById("create").addEventListener('click', async(e) =>{
     e.preventDefault();
-    const logradouro = document.getElementById('id').value.trim(); // usando o id input para logradouro
-    const cpfGerente = document.getElementById('nome').value.trim(); // usando o nome input para cpf gerente
+    const logradouro = document.getElementById('logradouro').value.trim(); // usando o id input para logradouro
+    const cpf_gerente = document.getElementById('cpf_gerente').value.trim(); // usando o cpf input para cpf gerente
     const numVendas = 0; // inicializa com 0
     const receitaTotal = 0; // inicializa com 0
 
-    if (logradouro === '' || cpfGerente === '') {
+    if (logradouro === '' || cpf_gerente === '') {
         alert('Por favor, preencha todos os dados');
     }else{
         try{
             const franquia = {
                 "logradouro": logradouro, 
-                "cpf_gerente": cpfGerente,
+                "cpf_gerente": cpf_gerente,
                 "num_vendas": numVendas,
                 "receita_total": receitaTotal
             }    
@@ -60,8 +60,8 @@ document.getElementById("create").addEventListener('click', async(e) =>{
         }
     }
 
-    document.getElementById('id').value = '';
-    document.getElementById('nome').value = '';
+    document.getElementById('logradouro').value = '';
+    document.getElementById('cpf_gerente').value = '';
 })
 
 // função que deleta uma franquia
