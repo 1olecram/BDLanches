@@ -1,6 +1,7 @@
 import appApi from "./src/backend/api/appApi.js";
 import frontApp from "./src/backend/frontRoutes/appFront.js";
-
+import dotenv from 'dotenv';
+dotenv.config();
 /**
  * Rodar o servidor!
  */

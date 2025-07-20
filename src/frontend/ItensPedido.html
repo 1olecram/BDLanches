@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pagina Inicial</title>
+  <title>Itens do Pedido</title>
   <!--favicon-->
 	<link rel="icon" href="./public/images/hamburguer.png" type="image/png">
 
@@ -25,13 +25,10 @@
     <link href="./css/com borda/bordered-theme.css" rel="stylesheet">
     <link href="./css/responsivo/responsive.css" rel="stylesheet">
     <script src="js/session/logout.js"></script>
-
-
 </head>
 
 <body>
 
-  
 <!--start header-->
 <header class="top-header">
   <nav class="navbar navbar-expand align-items-center gap-4">
@@ -96,7 +93,7 @@
 							<ol class="breadcrumb mb-0 p-0">
 								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
 								</li>
-								<li class="breadcrumb-item active" aria-current="page">Trabalho de Banco de Dados</li>
+								<li class="breadcrumb-item active" aria-current="page">Itens do Pedido</li>
 							</ol>
 						</nav>
 					</div>
@@ -141,7 +138,7 @@
 				</div>
 				<!--end breadcrumb-->
       
-        <h3 id="textoCentral" class="mb-0 text-uppercase">Funcionarios</h3>
+        <h3 id="textoCentral" class="mb-0 text-uppercase">Itens do Pedido</h3>
 				<hr>
           				      
 			  
@@ -155,19 +152,23 @@
                 <div class="card">
                   <div class="card-header py-3">
                     <div class="d-flex align-items-center justify-content-between">
-                      <h5 class="mb-0">Buscar Funcionário</h5>
+                      <h5 class="mb-0">Buscar Item do Pedido</h5>
                     </div>
                   </div>
                   <div class="card-body">
                     <form id="telaEntrada" class="row g-3">
-                        <div class="col-12">
-                            <label for="cpfSearch" class="form-label">CPF</label>
-                            <input type="text" class="form-control" id="cpfSearch" placeholder="12345678910">
+                        <div class="col-6">
+                            <label for="numeroPedidoSearch" class="form-label">Número do Pedido</label>
+                            <input type="number" class="form-control" id="numeroPedidoSearch" placeholder="123">
+                        </div>
+                        <div class="col-6">
+                            <label for="codigoSearch" class="form-label">Código do Item</label>
+                            <input type="number" class="form-control" id="codigoSearch" placeholder="456">
                         </div>
                                            
                         <div class="col-12">
                             <div class="d-grid">
-                                <button id="searchFunc" type="submit" class="btn btn-primary">Buscar</button>
+                                <button id="searchItem" type="submit" class="btn btn-primary">Buscar</button>
                             </div>
                         </div>
                     </form>
@@ -178,31 +179,23 @@
                 <div class="card">
                   <div class="card-header py-3">
                     <div class="d-flex align-items-center justify-content-between">
-                      <h5 class="mb-0">Inserir Funcionario</h5>
+                      <h5 class="mb-0">Inserir Item no Pedido</h5>
                     </div>
                   </div>
                   <div class="card-body">
                     <form id="telaEntrada" class="row g-3">
                         <div class="col-12">
-                            <label for="cpf" class="form-label">CPF</label>
-                            <input type="text" class="form-control" id="cpf" placeholder="12345678910">
+                            <label for="numeroPedido" class="form-label">Número do Pedido</label>
+                            <input type="number" class="form-control" id="numeroPedido" placeholder="123">
                         </div>
                         <div class="col-12">
-                            <label for="nome" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="nome" placeholder="Joao_123">
+                            <label for="codigo" class="form-label">Código do Item</label>
+                            <input type="number" class="form-control" id="codigo" placeholder="456">
                         </div>
                         <div class="col-12">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Joao_123">
+                            <label for="qtdProduto" class="form-label">Quantidade</label>
+                            <input type="number" class="form-control" id="qtdProduto" placeholder="2" min="1">
                         </div>
-                        <div class="col-12">
-                            <label for="salario" class="form-label">Salario</label>
-                            <input type="text" class="form-control" id="salario" placeholder="Somente Número">
-                        </div>                        
-                        <div class="col-12">
-                            <label for="cargo" class="form-label">Cargo</label>
-                            <input type="text" class="form-control" id="cargo" placeholder="Atendente, Gerente, etc">
-                        </div>                        
                         
                         <div class="col-12">
                             <div class="d-grid">
@@ -217,30 +210,30 @@
                 <div class="card">
                   <div class="card-header py-3">
                     <div class="d-flex align-items-center justify-content-between">
-                      <h5 class="mb-0">Atualizar funcionário</h5>
+                      <h5 class="mb-0">Atualizar Item do Pedido</h5>
                     </div>
                   </div>
                   <div class="card-body">
                     <form id="telaEntrada" class="row g-3">
-                        <div class="col-12">
-                            <label for="cpfUpdate" class="form-label">CPF do Funcionario</label>
-                            <input type="text" class="form-control" id="cpfUpdate" placeholder="12345678910">
+                        <div class="col-6">
+                            <label for="numeroPedidoUpdate" class="form-label">Número do Pedido</label>
+                            <input type="number" class="form-control" id="numeroPedidoUpdate" placeholder="123">
+                        </div>
+                        <div class="col-6">
+                            <label for="codigoUpdate" class="form-label">Código do Item</label>
+                            <input type="number" class="form-control" id="codigoUpdate" placeholder="456">
                         </div>
                         <div class="col-12">
-                            <label for="select" class="form-label">Campos de atualização</label>
+                            <label for="select" class="form-label">Campo para atualização</label>
                             <select class="form-select" id="select" > 
                             <option selected="" disabled>Selecione uma Coluna para atualizar</option>
-                            <option value="cpf">CPF</option>
-                            <option value="nome">Nome</option>
-                            <option value="salario">Salário</option>
-                            <option value="email">Email</option>
-                            <option value="cargo">Cargo</option>
+                            <option value="qtd_produto">Quantidade</option>
                         </select>
                         </div>                       
 
                         <div class="col-12">
-                            <label for="valor" class="form-label">Novo Valor da Coluna</label>
-                            <input type="text" class="form-control" id="valor" placeholder="">
+                            <label for="valor" class="form-label">Novo Valor</label>
+                            <input type="number" class="form-control" id="valor" placeholder="Nova quantidade" min="1">
                         </div> 
                         <div class="col-12">
                             <div class="d-grid">
@@ -256,14 +249,18 @@
                 <div class="card">
                   <div class="card-header py-3">
                     <div class="d-flex align-items-center justify-content-between">
-                      <h5 class="mb-0">Deletar funcionário</h5>
+                      <h5 class="mb-0">Deletar Item do Pedido</h5>
                     </div>
                   </div>
                   <div class="card-body">
                     <form id="telaEntrada" class="row g-3">
-                        <div class="col-12">
-                            <label for="cpfDelete" class="form-label">CPF do Funcionario</label>
-                            <input type="text" class="form-control" id="cpfDelete" placeholder="12345678910">
+                        <div class="col-6">
+                            <label for="numeroPedidoDelete" class="form-label">Número do Pedido</label>
+                            <input type="number" class="form-control" id="numeroPedidoDelete" placeholder="123">
+                        </div>
+                        <div class="col-6">
+                            <label for="codigoDelete" class="form-label">Código do Item</label>
+                            <input type="number" class="form-control" id="codigoDelete" placeholder="456">
                         </div>
                         <div class="col-12">
                             <div class="d-grid">
@@ -278,12 +275,12 @@
                 <div class="card">
                   <div class="card-header py-3">
                     <div class="d-flex align-items-center justify-content-between">
-                      <h5 class="mb-0">Listar funcionário</h5>
+                      <h5 class="mb-0">Listar Itens dos Pedidos</h5>
                         <button id="listAll" type="button" class="btn btn-primary">Listar</button>
                     </div>
                   </div>
                   <div class="card-body">
-                    <table id="tabelaFuncionarios" class="table table-striped table-bordered">
+                    <table id="tabelaItensPedido" class="table table-striped table-bordered">
                     </table>
                   </div>
                 </div>
@@ -328,7 +325,7 @@
   <script src="./public/metismenu/metisMenu.min.js"></script>
   <script src="./public/datatable/js/dataTables.bootstrap5.min.js"></script>
 
-  <script src="js/pages/funcionarios.js"></script>
+  <script src="js/pages/ItensPedido.js"></script>
   <script src="./public/simplebar/js/simplebar.min.js"></script>
   <script src="./js/main.js"></script>
 

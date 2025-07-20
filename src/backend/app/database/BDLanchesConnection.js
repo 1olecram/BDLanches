@@ -8,6 +8,7 @@ dotenv.config();
  * As credenciais e configurações são carregadas a partir de variáveis de ambiente.
  */
 
+
 const config = {
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
